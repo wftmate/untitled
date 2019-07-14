@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//QDebug() << "Debug Message";
+//qDebug() << "Debug Message";
 //QDebug("text");
 
 void MainWindow::EnterPressed(){
@@ -36,10 +36,17 @@ void MainWindow::EnterPressed(){
     ui->Display->addItem(input);
 }
 
-void MainWindow::KeyPressEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return)
+void MainWindow::KeyPressEvent(QKeyEvent * event){
+
+    QString temp = "temp string";
+    ui->Display->addItem(temp);
+
+    if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return || event->key() == 0x13 || event->key() == 0x01000004)
     {
-        EnterPressed();
+        //EnterPressed();
+
+        QString inputValue = ui->Input->text();
+        ui->Display->addItem(inputValue);
     }
 }
 

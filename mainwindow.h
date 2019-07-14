@@ -17,17 +17,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void KeyPressEvent(QKeyEvent * event);
+    void KeyReleaseEvent(QKeyEvent * event);
 
 private slots:
     void EnterPressed();
 
-    void on_Enter_clicked();
-
-    void on_pushButton_clicked();
-
-protected:
-    void KeyPressEvent(QKeyEvent *);
-    void KeyReleaseEvent(QKeyEvent *);
+//protected:
+//    void KeyPressEvent(QKeyEvent * event);
+//    void KeyReleaseEvent(QKeyEvent * event);
 };
 
 #endif // MAINWINDOW_H
