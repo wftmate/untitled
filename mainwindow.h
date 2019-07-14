@@ -21,6 +21,10 @@ private:
 private slots:
     void EnterPressed();
 
+    void on_Enter_clicked();
+
+    void on_pushButton_clicked();
+
 protected:
     void KeyPressEvent(QKeyEvent *);
     void KeyReleaseEvent(QKeyEvent *);

@@ -37,12 +37,17 @@ void MainWindow::EnterPressed(){
 }
 
 void MainWindow::KeyPressEvent(QKeyEvent *event){
-
-}
-
-void MainWindow::KeyReleaseEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Enter)
+    if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return)
     {
         EnterPressed();
     }
 }
+
+//void MainWindow::KeyReleaseEvent(QKeyEvent *event){
+//    if(event->key() == Qt::Key_Enter)
+//    {
+//        EnterPressed();
+//    }
+//}
+
+
