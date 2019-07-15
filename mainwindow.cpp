@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "QDebug"
 #include <QKeyEvent>
+#include <iostream>
 
 QString stack[10];
 
@@ -37,7 +38,7 @@ void MainWindow::EnterPressed(){
 }
 
 void MainWindow::KeyPressEvent(QKeyEvent *event){
-
+    std::cout << "Key Pressed";
     QString temp = "temp string";
     ui->Display->addItem(temp);
 
@@ -71,3 +72,10 @@ bool MainWindow::EventFilter(QEvent *event){
     return handled;
 }
 
+
+class keyEnterReceiver : public QObject
+{
+    Q_OBJECT
+protected:
+    bool eventFilter(QObject* obj, QEvent* event);
+};
