@@ -17,15 +17,16 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    void KeyPressEvent(QKeyEvent * event);
-    void KeyReleaseEvent(QKeyEvent * event);
 
+// handles clicking the enter button with the mouse
 private slots:
     void EnterPressed();
 
-//protected:
-//    void KeyPressEvent(QKeyEvent * event);
-//    void KeyReleaseEvent(QKeyEvent * event);
+// supposed to handle key presses. doesn't actually work
+protected:
+    void KeyPressEvent(QKeyEvent *event);
+    void KeyReleaseEvent(QKeyEvent *event);
+    bool EventFilter(QEvent *event);
 };
 
 #endif // MAINWINDOW_H
