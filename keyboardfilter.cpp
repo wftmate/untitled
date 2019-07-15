@@ -9,5 +9,11 @@ bool KeyboardFilter::eventFilter(QObject *target, QEvent *event)
             return true;
         }
     }
+    if(event->type() == QEvent::KeyRelease){
+        QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
+        if(keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter){
+            return true;
+        }
+    }
     return false;
 }

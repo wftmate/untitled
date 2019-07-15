@@ -41,10 +41,6 @@ void MainWindow::EnterPressed(){
 // -- Attempt 1 to catch "Enter"/"Return" key ---
 
 void MainWindow::KeyPressEvent(QKeyEvent *event){
-    std::cout << "Key Pressed";
-    QString temp = "temp string";
-    ui->Display->addItem(temp);
-
     if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return
             || event->key() == 0x13 || event->key() == 0x01000004)
     {
@@ -56,18 +52,17 @@ void MainWindow::KeyPressEvent(QKeyEvent *event){
 }
 
 void MainWindow::KeyReleaseEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Enter)
+    if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return
+            || event->key() == 0x13 || event->key() == 0x01000004)
     {
         EnterPressed();
     }
 }
 
 bool MainWindow::EventFilter(QEvent *event){
-
     bool handled = false;
     if(event->type() == QEvent::KeyPress){
         QKeyEvent *keyEvent = (QKeyEvent *)event;
-
         if(keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter){
             EnterPressed();
         }
