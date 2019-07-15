@@ -109,6 +109,8 @@ bool keyEnterReceiver::eventFilter(QObject* obj, QEvent* event)
     return false;
 }
 
-// do I also need to install the event handler thing?
+// Install the keyEnterReciever event filter onto the appropriate widget (which one is that?)
+keyEnterReceiver* key = new keyEnterReceiver();
+aWidgetInAnotherClass->installEventFilter(key);
 
 // -- Attempt 2 to catch "Enter"/"Return" key ---
