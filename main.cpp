@@ -8,8 +8,19 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    KeyboardFilter filter;
-    w.installEventFilter(&filter);
+    KeyboardFilter* key = new KeyboardFilter();
+    w.installEventFilter(key);
+
+    if(key){
+        w.EnterPressed();
+    }
+
+//    KeyboardFilter filter;
+//    a.installEventFilter(&filter);
+
+//    if(&filter){
+//        w.EnterPressed();
+//    }
 
     return a.exec();
 }

@@ -24,7 +24,8 @@ public slots:
     void EnterPressed();
 
 // supposed to handle key presses. doesn't actually work
-protected:
+//protected:
+public:
     void KeyPressEvent(QKeyEvent *event);
     void KeyReleaseEvent(QKeyEvent *event);
     bool EventFilter(QEvent *event);

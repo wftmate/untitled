@@ -10,8 +10,9 @@ class KeyboardFilter : public QObject
 public:
     KeyboardFilter( QObject *parent = nullptr ) : QObject( parent ) {}
 
-protected:
-    bool eventFilter( QObject *dist, QEvent *event );
+//protected:
+public:
+    bool eventFilter( QObject *target, QEvent *event );
 };
 
 #endif // KEYBOARDFILTER_H
