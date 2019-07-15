@@ -19,7 +19,8 @@ private:
     Ui::MainWindow *ui;
 
 // handles clicking the enter button with the mouse
-private slots:
+//private slots:
+public slots:
     void EnterPressed();
 
 // supposed to handle key presses. doesn't actually work

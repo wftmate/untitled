@@ -37,6 +37,9 @@ void MainWindow::EnterPressed(){
     ui->Display->addItem(input);
 }
 
+
+// -- Attempt 1 to catch "Enter"/"Return" key ---
+
 void MainWindow::KeyPressEvent(QKeyEvent *event){
     std::cout << "Key Pressed";
     QString temp = "temp string";
@@ -72,10 +75,40 @@ bool MainWindow::EventFilter(QEvent *event){
     return handled;
 }
 
+// -- Attempt 1 to catch "Enter"/"Return" key ---
 
+
+// -- Attempt 2 to catch "Enter"/"Return" key --- I think this one is better
+
+// Define event filter class - this probably belongs in a different .cpp file
 class keyEnterReceiver : public QObject
 {
     Q_OBJECT
 protected:
     bool eventFilter(QObject* obj, QEvent* event);
 };
+
+// Define what the eventFilter function beloning to the keyEnterReciever class does
+bool keyEnterReceiver::eventFilter(QObject* obj, QEvent* event)
+{
+    if (event->type()==QEvent::KeyPress) {
+        QKeyEvent* key = static_cast<QKeyEvent*>(event);
+        if ( (key->key()==Qt::Key_Enter) || (key->key()==Qt::Key_Return) ) {
+            //Enter or return was pressed
+
+            // how do I make this class do stuff in another class
+
+            MainWindow::EnterPressed();
+        } else {
+            return QObject::eventFilter(obj, event);
+        }
+        return true;
+    } else {
+        return QObject::eventFilter(obj, event);
+    }
+    return false;
+}
+
+// do I also need to install the event handler thing?
+
+// -- Attempt 2 to catch "Enter"/"Return" key ---
