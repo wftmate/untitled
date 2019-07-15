@@ -25,12 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        keyeventreciever.cpp \
+        keyboardfilter.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
-        keyeventreciever.h \
+        keyboardfilter.h \
         mainwindow.h
 
 FORMS += \
