@@ -15,7 +15,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private:
+//private:
+public:
     Ui::MainWindow *ui;
 
 // handles clicking the enter button with the mouse
@@ -23,12 +24,9 @@ private:
 public slots:
     void EnterPressed();
 
-// supposed to handle key presses. doesn't actually work
-//protected:
+// handles when the enter/return key is pressed
 public:
-    void KeyPressEvent(QKeyEvent *event);
-    void KeyReleaseEvent(QKeyEvent *event);
-    bool EventFilter(QEvent *event);
-};
+    static void EnterKeyPressed();
 
+};
 #endif // MAINWINDOW_H

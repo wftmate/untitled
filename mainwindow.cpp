@@ -1,10 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "QDebug"
-#include <QKeyEvent>
+#include <QDebug>
+#include <QEvent>
+#include <QApplication>
 #include <iostream>
 
 QString stack[10];
+bool enterKeyTracker = false;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,9 +25,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//qDebug() << "Debug Message";
-//QDebug("text");
-
 void MainWindow::EnterPressed(){
     //ui->Input->setText(QString("text"));
 
@@ -35,37 +34,12 @@ void MainWindow::EnterPressed(){
     ui->Input->clear();
 
     ui->Display->addItem(input);
+
 }
 
-
-// -- Attempt 1 to catch "Enter"/"Return" key ---
-
-void MainWindow::KeyPressEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return
-            || event->key() == 0x13 || event->key() == 0x01000004)
-    {
-        EnterPressed();
-
-        QString inputValue = ui->Input->text();
-        ui->Display->addItem(inputValue);
-    }
-}
-
-void MainWindow::KeyReleaseEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return
-            || event->key() == 0x13 || event->key() == 0x01000004)
-    {
-        EnterPressed();
-    }
-}
-
-bool MainWindow::EventFilter(QEvent *event){
-    bool handled = false;
-    if(event->type() == QEvent::KeyPress){
-        QKeyEvent *keyEvent = (QKeyEvent *)event;
-        if(keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter){
-            EnterPressed();
-        }
-    }
-    return handled;
+void MainWindow::EnterKeyPressed(){
+    //enterKeyTracker = true;
+    //qDebug() << "enterKeyTracker : " << enterKeyTracker;
+    EnterPressed();
+    ui->Display->clear();
 }
