@@ -40,6 +40,6 @@ void MainWindow::EnterPressed(){
 void MainWindow::EnterKeyPressed(){
     //enterKeyTracker = true;
     //qDebug() << "enterKeyTracker : " << enterKeyTracker;
-    EnterPressed();
-    ui->Display->clear();
+    //EnterPressed();
+    //ui->Display->clear();
 }
