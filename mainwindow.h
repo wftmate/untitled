@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QAbstractButton>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -18,15 +20,17 @@ public:
 //private:
 public:
     Ui::MainWindow *ui;
+    void BackspacePressed();
 
 // handles clicking the enter button with the mouse
-//private slots:
-public slots:
+private slots:
     void EnterPressed();
+    bool eventFilter(QObject *target, QEvent *event) override;
 
 // handles when the enter/return key is pressed
-public:
-    static void EnterKeyPressed();
-
+// This overrides the default keyPressEvent implicit in the QObject or whatever
+//protected:
+//    void keyPressEvent( /*QObject *target,*/ QKeyEvent *event );
+//    void keyReleaseEvent(QKeyEvent *event);
 };
 #endif // MAINWINDOW_H

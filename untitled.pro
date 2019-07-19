@@ -25,13 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        keyboardfilter.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        mainwindow2.cpp
 
 HEADERS += \
-        keyboardfilter.h \
-        mainwindow.h
+        mainwindow.h \
+        mainwindow2.h
 
 FORMS += \
         mainwindow.ui
