@@ -22,15 +22,19 @@ public:
     Ui::MainWindow *ui;
     void BackspacePressed();
 
-// -- Method 1 --------------------------------------------------------------------
-private slots:
+private slots: // slots are functions connected to buttons on windows (widgets)
     void EnterPressed();
-    bool eventFilter(QObject *target, QEvent *event) override;
 
-//// -- Method 2 --------------------------------------------------------------------
-//// This overrides the default keyPressEvent implicit in the QObject or whatever
-//protected:
-//    void keyPressEvent( /*QObject *target,*/ QKeyEvent *event );
-//    void keyReleaseEvent(QKeyEvent *event);
+//// -- Method 1: installEventFilter on Input object -------------------------------
+//private:
+//    bool eventFilter(QObject *target, QEvent *event) override;
+
+// -- Method 2: Rewrite keyPressEvent() function -----------------------------------
+// This overrides the default keyPressEvent implicit in the QObject or whatever
+protected:
+    void keyPressEvent( /*QObject *target,*/ QKeyEvent *event );
+    void keyReleaseEvent(QKeyEvent *event);
+
+// -- Method 3: shortcuts (note yet implemented) -----------------------------------
 };
 #endif // MAINWINDOW_H
